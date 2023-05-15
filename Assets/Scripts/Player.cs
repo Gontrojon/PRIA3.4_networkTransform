@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Player : NetworkBehaviour
 {
+    // variable que nos controla si puede o no saltar
+    private bool canJump = true;
     // hacemos que en el spawn tengan posicionamiento aleatorio dentro de un margen
     public override void OnNetworkSpawn()
     {
@@ -23,6 +25,24 @@ public class Player : NetworkBehaviour
         if (IsOwner)
         {
             transform.position += new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * 5f * Time.deltaTime;
+
+            // se obtiene si se pulso el imput del salto y si se puede saltar
+            if (Input.GetButtonDown("Jump") && canJump)
+            {
+                // se le añade una fuerza de salto en el eje y, un valor aceptable
+                GetComponent<Rigidbody>().AddForce(new Vector3(0, 300f, 0));
+                // se pone que no pueda saltar ya que lo acaba de hacer
+                canJump = false;
+            }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // se comprueba si colisiono con el suelo para dejarlo volver a saltar
+        if (collision.transform.CompareTag("Suelo"))
+        {
+            canJump = true;
         }
     }
 }
