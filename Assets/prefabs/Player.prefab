@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 8864032723568726120}
   - component: {fileID: 8864032723568726121}
   - component: {fileID: 8864032723568726122}
-  - component: {fileID: 416308814739983493}
   - component: {fileID: 1876733463742266666}
   - component: {fileID: 8864032723568726116}
-  - component: {fileID: 969665807922664846}
   - component: {fileID: 1067863610351758579}
+  - component: {fileID: 5963143749928947255}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -88,18 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &416308814739983493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8864032723568726117}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 427c1ea6aadb2b647a682dab138c2731, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1876733463742266666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +120,21 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &969665807922664846
+--- !u!136 &1067863610351758579
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8864032723568726117}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5963143749928947255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,7 +143,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8864032723568726117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 05c027b2a90efd74b9720b3c9013f323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 1
@@ -163,17 +164,3 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
---- !u!136 &1067863610351758579
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8864032723568726117}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}

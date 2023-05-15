@@ -5,36 +5,13 @@ using UnityEngine;
 
 public class Player : NetworkBehaviour
 {
-    public NetworkVariable<Vector3> Position = new NetworkVariable<Vector3>();
-
+    // hacemos que en el spawn tengan posicionamiento aleatorio dentro de un margen
     public override void OnNetworkSpawn()
     {
-        if (IsOwner)
-        {
-            Move();
-        }
+        transform.position = GetRandomPositionOnPlane();
     }
 
-    public void Move()
-    {
-        if (NetworkManager.Singleton.IsServer)
-        {
-            var randomPosition = GetRandomPositionOnPlane();
-            transform.position = randomPosition;
-            Position.Value = randomPosition;
-        }
-        else
-        {
-            SubmitPositionRequestServerRpc();
-        }
-    }
-
-    [ServerRpc]
-    void SubmitPositionRequestServerRpc(ServerRpcParams rpcParams = default)
-    {
-        Position.Value = GetRandomPositionOnPlane();
-    }
-
+    // metodo que genera una posicion aleatoria dentro de unos margenes
     static Vector3 GetRandomPositionOnPlane()
     {
         return new Vector3(Random.Range(-3f, 3f), 1f, Random.Range(-3f, 3f));
@@ -42,10 +19,10 @@ public class Player : NetworkBehaviour
 
     void Update()
     {
+        // si eres owner mueve con los imputs
         if (IsOwner)
         {
             transform.position += new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * 5f * Time.deltaTime;
-            Debug.Log("el inutil de turno");
         }
     }
 }
