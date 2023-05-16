@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
         else
         {
             StatusLabels();
-
         }
 
         GUILayout.EndArea();
@@ -37,7 +36,6 @@ public class GameManager : MonoBehaviour
             NetworkManager.Singleton.NetworkConfig.NetworkTransport.GetType().Name);
         GUILayout.Label("Mode: " + mode);
     }
-
 }
 
 
